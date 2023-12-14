@@ -34,5 +34,5 @@ export const PluginInfo = {
             name: "walrus"
         },
     },
-    README: "https://github.com/Vendicated/Vencord/tree/main/src/plugins/betterScreenshare"
+    README: "https://github.com/metroite/Vencord/tree/main/src/plugins/betterScreenshare"
 } as const satisfies types.PluginInfo;

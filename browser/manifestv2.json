@@ -3,9 +3,9 @@
     "minimum_chrome_version": "91",
 
     "name": "Vencord Web",
-    "description": "The cutest Discord mod now in your browser",
+    "description": "The secure Discord mod now in your browser",
     "author": "Vendicated",
-    "homepage_url": "https://github.com/Vendicated/Vencord",
+    "homepage_url": "https://github.com/metroite/Vencord",
     "icons": {
         "128": "icon.png"
     },

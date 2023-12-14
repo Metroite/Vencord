@@ -41,7 +41,7 @@ const ContributorBadge: ProfileBadge = {
         }
     },
     shouldShow: ({ user }) => isPluginDev(user.id),
-    link: "https://github.com/Vendicated/Vencord"
+    link: "https://github.com/metroite/Vencord"
 };
 
 let DonorBadges = {} as Record<string, Array<Record<"tooltip" | "badge", string>>>;
