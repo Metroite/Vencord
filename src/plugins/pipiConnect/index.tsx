@@ -19,37 +19,29 @@
 import { addContextMenuPatch, NavContextMenuPatchCallback, removeContextMenuPatch } from "@api/ContextMenu";
 import { classNameFactory } from "@api/Styles";
 import { OpenExternalIcon } from "@components/Icons";
-import { PluginAuthor, PluginDef } from "@utils/types";
-import { findByPropsLazy, findStoreLazy } from "@webpack";
+import { Devs } from "@utils/constants";
+import definePlugin from "@utils/types";
+import { findByPropsLazy } from "@webpack";
 import { Menu, PermissionsBits, PermissionStore, showToast, Toasts } from "@webpack/common";
 
-import { PluginInfo } from "./constants";
 
-const CloudUtils = findByPropsLazy("CloudUpload");
-const PendingReplyStore = findStoreLazy("PendingReplyStore");
 const OptionClasses = findByPropsLazy("optionName", "optionIcon", "optionLabel");
 
 export const cl = classNameFactory("vc-vmsg-");
 
-export default new class Plugin implements PluginDef {
-    readonly name: string;
-    readonly description: string;
-    readonly authors: PluginAuthor[];
-
-    constructor() {
-        this.name = PluginInfo.PLUGIN_NAME;
-        this.description = PluginInfo.DESCRIPTION;
-        this.authors = [PluginInfo.AUTHOR, ...Object.values(PluginInfo.CONTRIBUTORS)] as PluginAuthor[];
-    }
+export default definePlugin({
+    name: "PiPiConnect",
+    description: "This plugin connects you with your peers over a privacy friendly and more performant P2P (Peer-to-Peer) connection.",
+    authors: [Devs.metroite],
 
     start(): void {
         addContextMenuPatch("channel-attach", ctxMenuPatch);
-    }
+    },
 
     stop(): void {
         removeContextMenuPatch("channel-attach", ctxMenuPatch);
     }
-};
+});
 
 const ctxMenuPatch: NavContextMenuPatchCallback = (children, props) => () => {
     if (props.channel.guild_id && !(PermissionStore.can(PermissionsBits.SEND_VOICE_MESSAGES, props.channel) && PermissionStore.can(PermissionsBits.SEND_MESSAGES, props.channel))) return;
