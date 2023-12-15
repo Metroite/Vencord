@@ -16,4 +16,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import { RTC_CONFIGURATION } from "../constants";
+
+const configuration = { "iceServers": [{ "url": "stun:stun.l.google.com:19302" }, { "url": "stun:stun1.l.google.com:19302" }, { "url": "stun:stun2.l.google.com:19302" }, { "url": "stun:stun3.l.google.com:19302" }] };
+
+
 export const peer = "";
+
+const peerConnection = new RTCPeerConnection(RTC_CONFIGURATION);
